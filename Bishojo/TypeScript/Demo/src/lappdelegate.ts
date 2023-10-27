@@ -53,7 +53,8 @@ export class LAppDelegate {
    */
   public initialize(): boolean {
     // キャンバスの作成
-    canvas = document.createElement('canvas');
+    const sw = document.getElementById("canvasContainer");
+    canvas = sw.querySelector("#my-canvas");
     if (LAppDefine.CanvasSize === 'auto') {
       this._resizeCanvas();
     } else {
@@ -157,7 +158,7 @@ export class LAppDelegate {
       LAppPal.updateTime();
 
       // 画面の初期化
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      gl.clearColor(0.0, 0.0, 0.0, 0.0);
 
       // 深度テストを有効化
       gl.enable(gl.DEPTH_TEST);

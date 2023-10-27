@@ -9,6 +9,18 @@
           margin: 0;
           overflow: hidden;
       }
+      #my-canvas {
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        left: 0px;
+      }
+
+      #overlayText {
+        position: absolute;
+        top: 150px;
+        left: 820px;
+      }
     </style>
     <!-- Pollyfill script -->
     <script src="https://unpkg.com/core-js-bundle@3.6.1/minified.js"></script>
@@ -17,6 +29,10 @@
     <!-- Build script -->
     <script src = "./dist/bundle.js"></script>
   </head>
-  <body>
+  <body style="background-image: url('../../Resources/IMG_1533.png')">
+    <div id="canvasContainer">
+      <div id="overlayText"></div>
+      <canvas id="my-canvas"></canvas>
+    </div>
   </body>
 </html>

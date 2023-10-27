@@ -182,6 +182,7 @@ export class LAppLive2DManager {
   // gomiura original
   public initConnect(): void {
     const socket: WebSocket = new WebSocket(`ws://localhost:${LAppDefine.WebSocketPort}`);
+    const logTalk = [];
     socket.onopen = function(e: Event) {
       console.info("connect with websocket server");
     }
@@ -191,8 +192,17 @@ export class LAppLive2DManager {
       const[motion, message]: [string, string] = e.data.split("\n")
       console.log("message: ", message)
 
+      logTalk.push(message)
+      
+      const ovl = document.getElementById("overlayText");
+      ovl.innerHTML = '<p style="font-size: 24px; color: white; z-index:15;">会話ログ</p>';
+      for (let i=Math.max(0, logTalk.length-6); i<logTalk.length; i++) {
+        const who = i %2 == 0? "あなた: ": "ひより: ";
+        ovl.innerHTML += `<p style="font-size: 36px; color: white; z-index:15;">${who+message}</p>`;
+      }
+
       // モデルの動作を指定
-      f(motion);
+      if (motion != "-1") f(motion);
     }
     socket.onerror = function(e: Event) {
       console.error("connect error happen");

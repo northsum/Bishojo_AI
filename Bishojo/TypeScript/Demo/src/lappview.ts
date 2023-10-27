@@ -26,6 +26,7 @@ export class LAppView {
   constructor() {
     this._programId = null;
     this._back = null;
+    this._logQueue = null;
 
     // タッチ関係のイベント管理
     this._touchManager = new TouchManager();
@@ -74,6 +75,9 @@ export class LAppView {
       LAppDefine.ViewLogicalMaxBottom,
       LAppDefine.ViewLogicalMaxTop
     );
+
+    this._viewMatrix.translateY(-0.55);
+    this._viewMatrix.translateX(-0.40);
   }
 
   /**
@@ -119,27 +123,6 @@ export class LAppView {
 
     const textureManager = LAppDelegate.getInstance().getTextureManager();
     const resourcesPath = LAppDefine.ResourcesPath;
-
-    let imageName = '';
-
-    // 背景画像初期化
-    imageName = LAppDefine.BackImageName;
-
-    // 非同期なのでコールバック関数を作成
-    const initBackGroundTexture = (textureInfo: TextureInfo): void => {
-      const x: number = width * 0.5;
-      const y: number = height * 0.5;
-
-      const fwidth = textureInfo.width * 2.0;
-      const fheight = height * 0.95;
-      this._back = new LAppSprite(x, y, fwidth, fheight, textureInfo.id);
-    };
-
-    textureManager.createTextureFromPngFile(
-      resourcesPath + imageName,
-      false,
-      initBackGroundTexture
-    );
 
     // シェーダーを作成
     if (this._programId == null) {
@@ -243,6 +226,7 @@ export class LAppView {
   _viewMatrix: CubismViewMatrix; // viewMatrix
   _programId: WebGLProgram; // シェーダID
   _back: LAppSprite; // 背景画像
+  _logQueue: [LAppSprite]; // AI美少女との会話ログ
   _changeModel: boolean; // モデル切り替えフラグ
   _isClick: boolean; // クリック中
 }

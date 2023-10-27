@@ -15,25 +15,25 @@ import { LogLevel } from '@framework/live2dcubismframework';
 export const CanvasSize: { width: number; height: number } | 'auto' = 'auto';
 
 // 画面
-export const ViewScale = 1.0;
-export const ViewMaxScale = 2.0;
-export const ViewMinScale = 0.8;
+export const ViewScale = 1.7;
+export const ViewMaxScale = 2.5;
+export const ViewMinScale = 1.5;
 
-export const ViewLogicalLeft = -1.0;
-export const ViewLogicalRight = 1.0;
-export const ViewLogicalBottom = -1.0;
-export const ViewLogicalTop = 1.0;
+export const ViewLogicalLeft = -5.0;
+export const ViewLogicalRight = 5.0;
+export const ViewLogicalBottom = -0.75;
+export const ViewLogicalTop = 0.75;
 
 export const ViewLogicalMaxLeft = -2.0;
-export const ViewLogicalMaxRight = 2.0;
-export const ViewLogicalMaxBottom = -2.0;
+export const ViewLogicalMaxRight = 5.0;
+export const ViewLogicalMaxBottom = -5.0;
 export const ViewLogicalMaxTop = 2.0;
 
 // 相対パス
 export const ResourcesPath = '../../Resources/';
 
 // モデルの後ろにある背景の画像ファイル
-export const BackImageName = 'cool_guy.JPG';
+export const BackImageName = '';
 
 // モデル定義---------------------------------------------
 // モデルを配置したディレクトリ名の配列
@@ -70,3 +70,5 @@ export const RenderTargetHeight = 1000;
 
 // 通信用のwebsocketポート番号
 export const WebSocketPort = 5432;
+
+export const MaxTalkLog = 6;
